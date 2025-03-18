@@ -5,12 +5,12 @@
  */
 package registerform;
 
-import dbConnect.dbConnector;
+import dbConnector.dbConnector;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import login.LoginForm;
-import parking.admin;
+
 
 /**
  *
@@ -74,7 +74,6 @@ public class registerform extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         password1 = new javax.swing.JTextField();
         type1 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         time = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
@@ -126,7 +125,7 @@ public class registerform extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 400, 110, 30));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 390, 110, 30));
 
         jLabel8.setText("Click here! Login Form.");
         jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -134,7 +133,7 @@ public class registerform extends javax.swing.JFrame {
                 jLabel8MouseClicked(evt);
             }
         });
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 430, 250, 20));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 430, 250, 20));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -154,14 +153,6 @@ public class registerform extends javax.swing.JFrame {
         });
         getContentPane().add(password1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 240, 140, 30));
         getContentPane().add(type1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 280, 150, 30));
-
-        jButton3.setText("Admin");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 390, 80, 30));
 
         jLabel6.setText("TIME:");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 320, -1, -1));
@@ -221,12 +212,6 @@ public class registerform extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_password1ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        admin ad = new admin();
-        ad.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -265,7 +250,6 @@ public class registerform extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField fname;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

@@ -5,7 +5,11 @@
  */
 package login;
 
-import dbConnect.dbConnector;
+import dbConnect.Session;
+
+import dbConnect.passwordHasher;
+import dbConnector.dbConnector;
+import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -24,28 +28,40 @@ public class LoginForm extends javax.swing.JFrame {
     public LoginForm() {
         initComponents();
     }
- static String status1;
-    static String type1;
-    public static boolean loginAccount(String username, String password){
-          dbConnector db = new dbConnector();
+  static String status;
+    static String type;
+    
+    public static boolean loginAcc(String username, String password){
+        dbConnector connector = new dbConnector();
         try{
-            String query = "SELECT * FROM user WHERE username = '"+ username +"' AND pass = '"+password+"'";
-            ResultSet resultSet = db.getData(query);
-           
-            if(resultSet.next()){
-              
-                status1 = resultSet.getString("status"); 
-                type1 = resultSet.getString("type");
-                 
-                  return true;
-            }else{
-                return false; 
-            }
-        }catch(SQLException e){
-           
+            String query = "SELECT * FROM user  WHERE r_username = '" + username + "'";
+            ResultSet resultSet = connector.getData(query);
+            if(resultSet.next()){     
+   
+                String hashedPass = resultSet.getString("r_password");
+                String rehashedPass = passwordHasher.hashPassword(password);
+                
+                if(hashedPass.equals(rehashedPass)){        
+                status = resultSet.getString("u_status");   
+                type = resultSet.getString("u_type");
+                Session sess = Session.getInstance();
+                sess.setRid(resultSet.getInt("u_id"));
+                sess.setFname(resultSet.getString("u_fname"));
+                sess.setLname(resultSet.getString("u_lname"));
+                sess.setUsername(resultSet.getString("u_username"));
+                sess.setType(resultSet.getString("u_type"));
+                sess.setStatus(resultSet.getString("u_status"));
+            return true;   
+                }else{
+                return false;
+                }
+        }else{
+            return false;
+        }          
+        }catch (SQLException | NoSuchAlgorithmException ex) {
             return false;
         }
-        
+
     }
   
     @SuppressWarnings("unchecked")
@@ -53,7 +69,6 @@ public class LoginForm extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -61,21 +76,18 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         pw = new javax.swing.JPasswordField();
         uname = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 204));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 360));
-
-        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, 120, 360));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 360));
 
         jLabel1.setBackground(new java.awt.Color(204, 255, 204));
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel1.setText("LOG IN FORM");
+        jLabel1.setText("PARKING LOGIN ");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, -1, -1));
 
         jButton1.setText("LOGIN");
@@ -95,14 +107,20 @@ public class LoginForm extends javax.swing.JFrame {
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 200, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 51, 255));
         jLabel2.setText("USERNAME:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 102, 255));
         jLabel3.setText("PASSWORD:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, -1, -1));
-        getContentPane().add(pw, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 160, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, -1, -1));
+        getContentPane().add(pw, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 160, -1));
         getContentPane().add(uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 170, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login/parking1-removebg-preview.png"))); // NOI18N
+        jLabel4.setText("jLabel4");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 520, 330));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -114,32 +132,27 @@ public class LoginForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        dbConnector db = new dbConnector();
-        if (uname.getText().isEmpty() && pw.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Please enter your username & password !!.");
-        } else if (uname.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Please cannot be empty.");
-        } else if (pw.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Password cannot be empty.");
-        } else {
-            if (loginAccount(uname.getText(), pw.getText())) {
-                if (!status1.equals("Active")) {
-                    JOptionPane.showMessageDialog(null, "Pending Account, Please wait for the approval");
-                } else {
-            JOptionPane.showMessageDialog(null, "Login successful!");
-                        
-            if (type1.equals("Admin")) {
-                adminDashboard  rd= new adminDashboard();
-                rd.setVisible(true);
-                this.dispose();
-            }  else {
-                JOptionPane.showMessageDialog(null, "No account type found!");
+       if(loginAcc(uname.getText(),pw.getText())){
+            if(!status.equals("Active")){
+                JOptionPane.showMessageDialog(null, "In-Active Account, Contact the Admin!");
+            }else{
+                if(type.equals("Admin")){
+                    JOptionPane.showMessageDialog(null, "Login Success!");
+                    adminDashboard ads = new adminDashboard();
+                    ads.setVisible(true);
+                    this.dispose();
+                }else if(type.equals("Resident")){
+                    JOptionPane.showMessageDialog(null, "Login Success!");
+                    userForm udb = new userForm();
+                    udb.setVisible(true);
+                    this.dispose();
+                }else{
+                    JOptionPane.showMessageDialog(null, "No account type found, Contact the Admin!");
+                }
             }
+        }else{
+            JOptionPane.showMessageDialog(null, "Invalid Account!");
         }
-    } else {
-        JOptionPane.showMessageDialog(null, "Invalid Account, Please register first !!" );
-    }
-}
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -183,7 +196,7 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField pw;
     private javax.swing.JTextField uname;

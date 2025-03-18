@@ -5,8 +5,8 @@
  */
 package parking;
 
-import parking.admin;
-import dbConnect.dbConnector;
+
+import dbConnector.dbConnector;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import net.proteanit.sql.DbUtils;
@@ -120,9 +120,7 @@ public class adminDashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-       admin lfr = new admin();
-        lfr.setVisible(true);
-        this.dispose();
+       
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
