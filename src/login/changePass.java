@@ -244,7 +244,7 @@ public class changePass extends javax.swing.JFrame {
      String query = "SELECT * FROM user WHERE r_id = '" + sess.getRid() + "'";
     ResultSet rs = dbc.getData(query);
     if (rs.next()) {
-        String olddbpass = rs.getString("r_password");
+        String olddbpass = rs.getString("u_password");
         String oldhash = passwordHasher.hashPassword(oldpass.getText());
         String newhash = passwordHasher.hashPassword(newpass.getText()); //Hash the new password
 
@@ -254,7 +254,7 @@ public class changePass extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "New password cannot be the same as the old password!");
             }
             else{
-                dbc.updateData("UPDATE user SET r_password = '" + newhash + "' WHERE r_id = '" + sess.getRid() + "'"); //Added where clause
+                dbc.updateData("UPDATE user SET u_password = '" + newhash + "' WHERE u_id = '" + sess.getRid() + "'"); //Added where clause
                 JOptionPane.showMessageDialog(null, "Successfully Updated!");
                 LoginForm lg = new LoginForm();
                 lg.setVisible(true);

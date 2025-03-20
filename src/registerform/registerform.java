@@ -25,13 +25,13 @@ public class registerform extends javax.swing.JFrame {
         initComponents();
     }
 
-    public static String em, usname;
+    public static String  usname;
     public boolean duplicateCheck(){
         
         dbConnector dbc = new dbConnector();
         
        try{
-           String query = "SELECT * FROM user  WHERE u_username = '" +username.getText()+ "' OR u_email = '" + license.getText()+ "'";
+           String query = "SELECT * FROM user  WHERE u_username = '" +username.getText()+ "' OR u_license = " + license.getText()+ "'";
             ResultSet resultSet = dbc.getData(query);
      if (resultSet.next()) {
     usname = resultSet.getString("u_username");

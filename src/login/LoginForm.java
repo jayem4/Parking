@@ -34,11 +34,11 @@ public class LoginForm extends javax.swing.JFrame {
     public static boolean loginAcc(String username, String password){
         dbConnector connector = new dbConnector();
         try{
-            String query = "SELECT * FROM user  WHERE r_username = '" + username + "'";
+            String query = "SELECT * FROM user  WHERE u_username = '" + username + "'";
             ResultSet resultSet = connector.getData(query);
             if(resultSet.next()){     
    
-                String hashedPass = resultSet.getString("r_password");
+                String hashedPass = resultSet.getString("u_password");
                 String rehashedPass = passwordHasher.hashPassword(password);
                 
                 if(hashedPass.equals(rehashedPass)){        
@@ -141,7 +141,7 @@ public class LoginForm extends javax.swing.JFrame {
                     adminDashboard ads = new adminDashboard();
                     ads.setVisible(true);
                     this.dispose();
-                }else if(type.equals("Resident")){
+                }else if(type.equals("user")){
                     JOptionPane.showMessageDialog(null, "Login Success!");
                     userForm udb = new userForm();
                     udb.setVisible(true);
