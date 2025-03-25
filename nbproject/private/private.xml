@@ -3,21 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/CLIENT/OneDrive/Desktop/rosalita/Parking/src/login/changePass.java</file>
-            <file>file:/C:/Users/CLIENT/OneDrive/Desktop/rosalita/Parking/src/login/accountDetails.java</file>
-            <file>file:/C:/Users/CLIENT/OneDrive/Desktop/rosalita/Parking/src/parking/adminDashboard.java</file>
-            <file>file:/C:/Users/CLIENT/OneDrive/Desktop/rosalita/Parking/src/login/userForm.java</file>
-            <file>file:/C:/Users/CLIENT/OneDrive/Desktop/rosalita/Parking/src/dbConnect/passwordHasher.java</file>
-            <file>file:/C:/Users/CLIENT/OneDrive/Desktop/rosalita/Parking/src/dbConnector/dbConnector.java</file>
-            <file>file:/C:/Users/CLIENT/OneDrive/Desktop/rosalita/Parking/src/parking/icons8-admin-100.png</file>
-            <file>file:/C:/Users/CLIENT/OneDrive/Desktop/rosalita/Parking/src/login/parking1-removebg-preview.png</file>
-            <file>file:/C:/Users/CLIENT/OneDrive/Desktop/rosalita/Parking/src/registerform/registerform.java</file>
-            <file>file:/C:/Users/CLIENT/OneDrive/Desktop/rosalita/Parking/src/registerform/images.png</file>
-            <file>file:/C:/Users/CLIENT/OneDrive/Desktop/rosalita/Parking/src/login/parking.png</file>
-            <file>file:/C:/Users/CLIENT/OneDrive/Desktop/rosalita/Parking/src/registerform/images%20(1).png</file>
-            <file>file:/C:/Users/CLIENT/OneDrive/Desktop/rosalita/Parking/src/login/LoginForm.java</file>
-            <file>file:/C:/Users/CLIENT/OneDrive/Desktop/rosalita/Parking/src/login/icons8-parking-ticket-80.png</file>
-            <file>file:/C:/Users/CLIENT/OneDrive/Desktop/rosalita/Parking/src/dbConnect/Session.java</file>
+            <file>file:/C:/Users/Gwapo%20ko/Desktop/Parking/src/dbConnect/Session.java</file>
+            <file>file:/C:/Users/Gwapo%20ko/Desktop/Parking/src/login/icons8-parking-ticket-80.png</file>
+            <file>file:/C:/Users/Gwapo%20ko/Desktop/Parking/src/login/changePass.java</file>
+            <file>file:/C:/Users/Gwapo%20ko/Desktop/Parking/src/parking/adminDashboard.java</file>
+            <file>file:/C:/Users/Gwapo%20ko/Desktop/Parking/src/login/accountDetails.java</file>
+            <file>file:/C:/Users/Gwapo%20ko/Desktop/Parking/src/login/userForm.java</file>
+            <file>file:/C:/Users/Gwapo%20ko/Desktop/Parking/src/dbConnector/dbConnector.java</file>
+            <file>file:/C:/Users/Gwapo%20ko/Desktop/Parking/src/login/LoginForm.java</file>
+            <file>file:/C:/Users/Gwapo%20ko/Desktop/Parking/src/registerform/registerform.java</file>
+            <file>file:/C:/Users/Gwapo%20ko/Desktop/Parking/src/dbConnect/passwordHasher.java</file>
         </group>
     </open-files>
 </project-private>
