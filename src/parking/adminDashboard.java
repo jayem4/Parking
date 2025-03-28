@@ -10,6 +10,7 @@ import dbConnector.dbConnector;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import net.proteanit.sql.DbUtils;
+import registerform.createuserForm;
 
 /**
  *
@@ -89,7 +90,12 @@ public class adminDashboard extends javax.swing.JFrame {
         });
         jPanel3.add(Add, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 223, 103, -1));
 
-        Update.setText("UPDATEE");
+        Update.setText("UPDATE");
+        Update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateActionPerformed(evt);
+            }
+        });
         jPanel3.add(Update, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 272, 103, -1));
 
         Delete.setText("DELETE");
@@ -124,8 +130,14 @@ public class adminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
-
+     createuserForm cuf = new createuserForm();
+     cuf.setVisible(true);
+     dispose();
     }//GEN-LAST:event_AddActionPerformed
+
+    private void UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UpdateActionPerformed
 
     /**
      * @param args the command line arguments
